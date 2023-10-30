@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .custom-button {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: absolute;
+      }
+
+      .button-container {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        gap: 100px;
+      }
+
+      .button-container button:nth-child(2) {
+        left: 200px; /* Xác định vị trí ban đầu của button thứ hai */
+      }
+    </style>
+    <title>Custom Buttons</title>
+  </head>
+  <body>
+    <div class="button-container">
+      <h1 style="margin-bottom: 500px">Mày bị điên r Nga ạ</h1>
+      <button class="custom-button" onclick="showAlert('Đúng mày bị điên')">
+        Có
+      </button>
+      <button class="custom-button" onmouseover="moveButton()">Không</button>
+    </div>
+
+    <script>
+      function showAlert(message) {
+        if (
+          !document
+            .querySelector(".custom-button")
+            .classList.contains("pressed")
+        ) {
+          alert(message);
+          document.querySelector(".custom-button").classList.add("pressed");
+        }
+      }
+
+      function moveButton() {
+        var button = document.querySelector(".custom-button:nth-child(3)");
+        var maxX = window.innerWidth - button.clientWidth;
+        var maxY = window.innerHeight - button.clientHeight;
+
+        var randomX = Math.floor(Math.random() * maxX);
+        var randomY = Math.floor(Math.random() * maxY);
+
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+      }
+    </script>
+  </body>
+</html>
